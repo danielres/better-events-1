@@ -5,10 +5,18 @@ const { push, replace } = history;
 
 const getLocation = () => store.getState().location;
 
-describe('Home route', () => {
+describe('Home page route', () => {
   it('Supports "/"', () => {
     push('/');
     expect(getLocation().type).toEqual('HOME');
     expect(getLocation().pathname).toEqual('/');
+  });
+});
+
+describe('Event page route', () => {
+  it('Supports "/:eventCode"', () => {
+    push('/foo');
+    expect(getLocation().type).toEqual('EVENTPAGE');
+    expect(getLocation().pathname).toEqual('/foo');
   });
 });
