@@ -1,17 +1,21 @@
+import 'bootstrap/dist/css/bootstrap.css';
+
 import './App.css';
 
 import React, { Component } from 'react';
+import { Col, Grid, PageHeader, Row } from 'react-bootstrap';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Better Events</h1>
-        </header>
-
-        {this.props.children}
-      </div>
+      <Grid>
+        <PageHeader>Better Events</PageHeader>
+        <Row>
+          <Col xs={12} md={12}>
+            {this.props.children}
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
