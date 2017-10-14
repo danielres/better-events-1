@@ -14,12 +14,13 @@
   "scripts": {
     "start": "BROWSER=none PORT=3010 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --verbose",
+    "test": "react-scripts test --env=jsdom --verbose --setupTestFrameworkScriptFile=raf/polyfill",
     "test:features": "npm run start & sleep 3 && testcafe chromium:headless features/*.test.js; EXIT_CODE=$?; kill $!; exit $EXIT_CODE",
     "test:once": "CI=true npm run test",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "raf": "^3.4.0",
     "testcafe": "^0.18.0"
   }
 }
