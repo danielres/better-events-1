@@ -8,7 +8,7 @@ const getLocation = () => store.getState().location;
 describe('Home page route', () => {
   it('Supports "/"', () => {
     push('/');
-    expect(getLocation().type).toEqual('HOME');
+    expect(getLocation().type).toEqual('HOMEPAGE');
     expect(getLocation().pathname).toEqual('/');
   });
 });
