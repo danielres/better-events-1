@@ -20,7 +20,6 @@ const {
   enhancer: routerEnhancer,
 } = connectRoutes(history, routesMap);
 
-
 const rootReducer = combineReducers({
   location: locationReducer,
 });
