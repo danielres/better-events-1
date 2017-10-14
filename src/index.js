@@ -5,19 +5,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import EventPage from './EventPage';
 import store from './store';
 
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
 
-const Switcher = connect(({ location: { type } }) => ({
-  type,
+const Switcher = connect(({ location }) => ({
+  location,
 }))(props => {
-  switch (props.type) {
+  switch (props.location.type) {
     case 'HOMEPAGE':
       return <div>HOME</div>;
     case 'EVENTPAGE':
-      return <div>EVENTPAGE</div>;
+      return (
+        <EventPage eventCode={props.location.payload.eventCode} />
+      );
     default:
       return <div>NOT FOUND</div>;
   }
