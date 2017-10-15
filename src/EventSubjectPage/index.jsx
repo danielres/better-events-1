@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { Link, NavLink } from 'redux-first-router-link';
+import Link from 'redux-first-router-link';
 
 const EventSubjectPage = ({ event, eventCode, subject }) => (
   <div>
@@ -8,14 +8,14 @@ const EventSubjectPage = ({ event, eventCode, subject }) => (
       <div>
         <h2>
           <small>
-            <NavLink
+            <Link
               to={{
                 type: 'EVENTPAGE',
                 payload: { eventCode },
               }}
             >
               {event.name}
-            </NavLink>
+            </Link>
             {' / '}
           </small>
 
