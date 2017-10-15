@@ -21,6 +21,8 @@ const Switcher = connect(({ location }) => ({
       return (
         <EventPage eventCode={props.location.payload.eventCode} />
       );
+    case 'EVENTSUBJECTPAGE':
+      return <div>Event subject page</div>;
     default:
       return <div>NOT FOUND</div>;
   }
