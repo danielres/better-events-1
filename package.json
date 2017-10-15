@@ -22,13 +22,15 @@
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
-    "start": "BROWSER=none PORT=3010 react-scripts start",
     "build": "react-scripts build",
+    "dev": "concurrently 'yarn run dev:frontend' 'yarn run dev:server'",
+    "dev:frontend": "BROWSER=none PORT=3010 react-scripts start",
+    "dev:server": "nodemon server/bin/www",
+    "eject": "react-scripts eject",
     "server": "node server/bin/www",
-    "test": "react-scripts test --env=jsdom --verbose --setupTestFrameworkScriptFile=raf/polyfill",
-    "test:features": "npm run start & sleep 3 && testcafe chromium:headless features/*.test.js; EXIT_CODE=$?; kill $!; exit $EXIT_CODE",
-    "test:once": "CI=true npm run test",
-    "eject": "react-scripts eject"
+    "test:features": "yarn run start & sleep 3 && testcafe chromium:headless features/*.test.js; EXIT_CODE=$?; kill $!; exit $EXIT_CODE",
+    "test:once": "CI=true yarn run test",
+    "test": "react-scripts test --env=jsdom --verbose --setupTestFrameworkScriptFile=raf/polyfill"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
