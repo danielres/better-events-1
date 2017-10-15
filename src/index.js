@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 import EventPage from './EventPage';
+import EventSubjectPage from './EventSubjectPage';
 import store from './store';
 
 // import registerServiceWorker from './registerServiceWorker';
@@ -22,7 +23,7 @@ const Switcher = connect(({ location }) => ({
         <EventPage eventCode={props.location.payload.eventCode} />
       );
     case 'EVENTSUBJECTPAGE':
-      return <div>Event subject page</div>;
+      return <EventSubjectPage />;
     default:
       return <div>NOT FOUND</div>;
   }
