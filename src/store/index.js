@@ -7,6 +7,7 @@ import {
 import { connectRoutes } from 'redux-first-router';
 import createHistory from 'history/createBrowserHistory';
 
+import { eventsReducer } from './events';
 import routesMap from './routesMap';
 
 const compose =
@@ -21,6 +22,7 @@ const {
 } = connectRoutes(history, routesMap);
 
 const rootReducer = combineReducers({
+  events: eventsReducer,
   location: locationReducer,
 });
 
