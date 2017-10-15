@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
       id: 'dhk38s2',
       name: 'Event 1',
       subjects: [
-        { name: 'Subject 1' },
-        { name: 'Subject 2' },
-        { name: 'Subject 3' },
-        { name: 'Other' },
+        { id: 'sd2kj4k', name: 'Subject 1' },
+        { id: 'llkl23p', name: 'Subject 2' },
+        { id: 'kadn3fv', name: 'Subject 3' },
+        { id: 'l349dfk', name: 'Other' },
       ],
     },
   });
