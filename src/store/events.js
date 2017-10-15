@@ -4,7 +4,7 @@ export const types = {
   EVENT_FAILURE: 'EVENT_FAILURE',
 };
 
-const initialState = { entries: {} };
+export const initialState = { entries: {} };
 
 export const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
