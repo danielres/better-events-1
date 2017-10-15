@@ -27,13 +27,13 @@
   },
   "scripts": {
     "build": "react-app-rewired build",
-    "dev": "concurrently 'yarn run dev:frontend' 'yarn run dev:server'",
+    "dev": "concurrently 'npm run dev:frontend' 'npm run dev:server'",
     "dev:frontend": "BROWSER=none PORT=3010 react-app-rewired start",
     "dev:server": "nodemon server/bin/www",
     "eject": "react-app-rewired eject",
     "server": "node server/bin/www",
-    "test:features": "yarn run start & sleep 3 && testcafe chromium:headless features/*.test.js; EXIT_CODE=$?; kill $!; exit $EXIT_CODE",
-    "test:once": "CI=true yarn run test",
+    "test:features": "npm run start & sleep 3 && testcafe chromium:headless features/*.test.js; EXIT_CODE=$?; kill $!; exit $EXIT_CODE",
+    "test:once": "CI=true npm run test",
     "test": "react-app-rewired test --env=jsdom --verbose --setupTestFrameworkScriptFile=raf/polyfill"
   },
   "devDependencies": {
