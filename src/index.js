@@ -19,9 +19,7 @@ const Switcher = connect(({ location }) => ({
     case 'HOMEPAGE':
       return <div>HOME</div>;
     case 'EVENTPAGE':
-      return (
-        <EventPage eventCode={props.location.payload.eventCode} />
-      );
+      return <EventPage />;
     case 'EVENTSUBJECTPAGE':
       return <EventSubjectPage />;
     default:

@@ -32,6 +32,7 @@ const EventPage = ({ eventCode, event }) => (
 
 const mapState = ({ events, location }) => ({
   event: events.entries[location.payload.eventCode],
+  eventCode: location.payload.eventCode,
 });
 
 export default connect(mapState)(EventPage);
