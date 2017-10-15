@@ -1,6 +1,7 @@
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'redux-first-router-link';
 
 const EventPage = ({ eventCode, event }) => (
   <div>
@@ -12,9 +13,16 @@ const EventPage = ({ eventCode, event }) => (
 
         <ListGroup>
           {event.subjects.map(subject => (
-            <ListGroupItem href="#" key={subject.id}>
+            <NavLink
+              className="list-group-item"
+              key={subject.id}
+              to={{
+                type: 'EVENTSUBJECTPAGE',
+                payload: { eventCode, subjectId: subject.id },
+              }}
+            >
               {subject.name}
-            </ListGroupItem>
+            </NavLink>
           ))}
         </ListGroup>
       </div>
