@@ -7,10 +7,10 @@ exports.up = (knex, Promise) => {
       .defaultTo(knex.raw('uuid_generate_v4()'));
     table.string('name').notNullable();
     table
-      .string('slug')
+      .string('eventCode')
       .notNullable()
       .unique();
-    table.jsonb('attrs');
+    table.jsonb('subjects');
     table.dateTime('createdAt').defaultTo(knex.raw('now()'));
   });
 };
