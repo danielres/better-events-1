@@ -5,12 +5,15 @@ var Events = bookshelf.Model.extend({
   tableName: 'events',
 });
 
-Events
-  // .fetch({ withRelated: ['posts.tags'] })
-  .fetchAll()
-  .then(function(event) {
-    console.log(event.toJSON());
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+function findEventByEventCode(eventCode) {
+  return Events.where({ eventCode: eventCode })
+    .fetch()
+    .then(function(event) {
+      return event.toJSON();
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+}
+
+module.exports = { findEventByEventCode };
