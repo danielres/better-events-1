@@ -1,25 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../db/bookshelf');
 
 /* GET users listing. */
 router.get('/:eventCode', function(req, res, next) {
-  const eventCode = 'one';
-
-  if (req.params['eventCode'] === eventCode) {
+  db.findEventByEventCode(req.params['eventCode']).then(event =>
     res.json({
-      event: {
-        eventCode: 'one',
-        id: 'dhk38s2',
-        name: 'Event 1',
-        subjects: [
-          { id: 'sd2kj4k', name: 'Subject 1' },
-          { id: 'llkl23p', name: 'Subject 2' },
-          { id: 'kadn3fv', name: 'Subject 3' },
-          { id: 'l349dfk', name: 'Other' },
-        ],
-      },
-    });
-  }
+      event,
+    })
+  );
 });
 
 module.exports = router;
