@@ -31,6 +31,11 @@ class App extends Component {
       <Grid>
         <Header>
           <Link to={{ type: 'HOMEPAGE' }}>Better Events</Link>
+          <div className="pull-right">
+            <small>
+              <Link to={{ type: 'ADMINPAGE' }}>admin</Link>
+            </small>
+          </div>
         </Header>
         <Row>
           <Col xs={12} md={12}>
