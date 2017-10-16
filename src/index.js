@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
+import AdminPage from './AdminPage';
 import EventPage from './EventPage';
 import EventSubjectPage from './EventSubjectPage';
 import store from './store';
@@ -16,8 +17,8 @@ const Switcher = connect(({ location }) => ({
   location,
 }))(props => {
   switch (props.location.type) {
-    case 'ADMIN':
-      return <div>ADMIN</div>;
+    case 'ADMINPAGE':
+      return <AdminPage />;
     case 'HOMEPAGE':
       return <div>HOME</div>;
     case 'EVENTPAGE':
