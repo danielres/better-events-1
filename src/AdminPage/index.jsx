@@ -74,6 +74,25 @@ const mapState = () => ({
         },
       ],
     },
+    {
+      id: 'aj4jd73',
+      event: { id: '2jh393', name: 'Mock event 2' },
+      author: { id: 'njh23jhx', displayName: 'Anon2' },
+      messages: [
+        {
+          author: { id: 'njh23jhq', displayName: 'Anon2' },
+          body: 'Hello there',
+          id: 'al3k8dh',
+          timestamp: '2017-01-01:10:00:01',
+        },
+        {
+          author: { id: 'njh23jhs', displayName: 'Anon2' },
+          body: 'Is there anyone ?',
+          id: 'kne72ts',
+          timestamp: '2017-01-01:10:00:02',
+        },
+      ],
+    },
   ],
 });
 
