@@ -12,7 +12,7 @@ import React from 'react';
 
 const panelTitle = discussion => (
   <h3>
-    id: {discussion.id} | event: {discussion.event.name} | Started by:{' '}
+    event: {discussion.event.name} | Started by:{' '}
     {discussion.author.displayName}
   </h3>
 );
@@ -21,6 +21,7 @@ const AdminPage = ({ discussions }) => (
   <div>
     {discussions && (
       <div>
+        <h2>Latest discussions</h2>
         <PanelGroup accordion>
           {discussions.map((discussion, i) => (
             <Panel
@@ -28,25 +29,25 @@ const AdminPage = ({ discussions }) => (
               header={panelTitle(discussion)}
               key={discussion.id}
             >
-            <ListGroup fill>
-              {discussion.messages.map(message => (
-                <ListGroupItem key={message.id}>
-                  <Row>
-                    <Col xs={1} md={2}>
-                      <small>
-                        {message.author.displayName}
-                        {': '}
-                      </small>
-                    </Col>
-                    <Col xs={11} md={11}>
-                      {message.body}
-                    </Col>
-                  </Row>
-                </ListGroupItem>
-              ))}
-            </ListGroup>
-          </Panel>
-        ))}
+              <ListGroup fill>
+                {discussion.messages.map(message => (
+                  <ListGroupItem key={message.id}>
+                    <Row>
+                      <Col xs={1} md={2}>
+                        <small>
+                          {message.author.displayName}
+                          {': '}
+                        </small>
+                      </Col>
+                      <Col xs={11} md={11}>
+                        {message.body}
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
+                ))}
+              </ListGroup>
+            </Panel>
+          ))}
         </PanelGroup>
       </div>
     )}
