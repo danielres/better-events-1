@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/:eventCode', function(req, res, next) {
   res.json({
     event: {
       id: 'dhk38s2',

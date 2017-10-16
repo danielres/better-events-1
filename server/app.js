@@ -18,7 +18,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.use('/api/v1/users', users);
-app.use('/api/v1/events/:eventCode', events);
+app.use('/api/v1/events', events);
 
 io.on('connection', function(socket) {
   console.log('a user connected');
