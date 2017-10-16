@@ -21,6 +21,7 @@ const fetchEvent = (eventCode, dispatch) =>
     );
 
 export default {
+  ADMIN: '/admin',
   HOMEPAGE: '/',
   EVENTPAGE: {
     path: '/:eventCode',

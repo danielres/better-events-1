@@ -16,6 +16,8 @@ const Switcher = connect(({ location }) => ({
   location,
 }))(props => {
   switch (props.location.type) {
+    case 'ADMIN':
+      return <div>ADMIN</div>;
     case 'HOMEPAGE':
       return <div>HOME</div>;
     case 'EVENTPAGE':
