@@ -3,6 +3,7 @@ import {
   ListGroup,
   ListGroupItem,
   Panel,
+  PanelGroup,
   Row,
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -20,9 +21,13 @@ const AdminPage = ({ discussions }) => (
   <div>
     {discussions && (
       <div>
-        <h2>Discussions</h2>
-        {discussions.map(discussion => (
-          <Panel header={panelTitle(discussion)}>
+        <PanelGroup accordion>
+          {discussions.map((discussion, i) => (
+            <Panel
+              eventKey={i}
+              header={panelTitle(discussion)}
+              key={discussion.id}
+            >
             <ListGroup fill>
               {discussion.messages.map(message => (
                 <ListGroupItem key={message.id}>
@@ -42,6 +47,7 @@ const AdminPage = ({ discussions }) => (
             </ListGroup>
           </Panel>
         ))}
+        </PanelGroup>
       </div>
     )}
   </div>
