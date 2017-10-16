@@ -32,6 +32,9 @@
   "scripts": {
     "build": "react-app-rewired build",
     "db:up": "docker-compose -f docker-compose.dev.yml up db adminer",
+    "db:migrate": "knex migrate:latest --knexfile ./server/db/knexfile.js",
+		"db:migrate:make": "knex migrate:make --knexfile ./server/db/knexfile.js",
+		"db:rollback": "knex migrate:rollback --knexfile ./server/db/knexfile.js",
     "dev": "concurrently 'npm run db:up' 'npm run dev:frontend' 'npm run dev:server'",
     "dev:frontend": "BROWSER=none PORT=3010 react-app-rewired start",
     "dev:server": "nodemon server/bin/www",
