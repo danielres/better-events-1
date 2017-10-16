@@ -1,8 +1,36 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import Link from 'redux-first-router-link';
+import io from 'socket.io-client';
 
-const EventSubjectPage = ({ event, eventCode, subject }) => (
+var socket = io();
+
+socket.emit('chat mounted', 'user');
+//     socket.on('new bc message', msg =>
+//       dispatch(actions.receiveRawMessage(msg))
+//     );
+//     socket.on('typing bc', user =>
+//       dispatch(actions.typing(user))
+//     );
+//     socket.on('stop typing bc', user =>
+//       dispatch(actions.stopTyping(user))
+//     );
+//     socket.on('new channel', channel =>
+//       dispatch(actions.receiveRawChannel(channel))
+//     );
+//     socket.on('receive socket', socketID =>
+//       dispatch(authActions.receiveSocket(socketID))
+//     );
+//     socket.on('receive private channel', channel =>
+//       dispatch(actions.receiveRawChannel(channel))
+//     );
+
+const EventSubjectPage = ({
+  event,
+  eventCode,
+  onSubmit,
+  subject,
+}) => (
   <div>
     {subject && (
       <div>
@@ -21,6 +49,23 @@ const EventSubjectPage = ({ event, eventCode, subject }) => (
 
           {subject.name}
         </h2>
+
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            if (this.messageInput.value)
+              onSubmit(this.messageInput.value);
+            this.messageInput.value = '';
+          }}
+        >
+          <input
+            autoFocus
+            ref={e => (this.messageInput = e)}
+            type="text"
+          />
+
+          <button>Send</button>
+        </form>
       </div>
     )}
   </div>
@@ -38,4 +83,10 @@ const mapState = ({ events, location }) => {
   };
 };
 
-export default connect(mapState)(EventSubjectPage);
+const mapDispatch = dispatch => ({
+  onSubmit: msg => {
+    socket.emit('message', msg);
+  },
+});
+
+export default connect(mapState, mapDispatch)(EventSubjectPage);
