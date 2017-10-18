@@ -38,7 +38,7 @@
     "db:rollback": "knex migrate:rollback --knexfile ./server/db/knexfile.js",
     "dev": "concurrently 'npm run db:up' 'npm run dev:frontend' 'npm run dev:server'",
     "dev:frontend": "BROWSER=none PORT=3010 react-app-rewired start",
-    "dev:server": "nodemon server/bin/www",
+    "dev:server": "PORT=3001 nodemon server/bin/www",
     "eject": "react-app-rewired eject",
     "server": "node server/bin/www",
     "test:features": "npm run start & sleep 3 && testcafe chromium:headless features/*.test.js; EXIT_CODE=$?; kill $!; exit $EXIT_CODE",
