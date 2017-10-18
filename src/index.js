@@ -8,11 +8,11 @@ import App from './App';
 import AdminPage from './AdminPage';
 import EventPage from './EventPage';
 import EventSubjectPage from './EventSubjectPage';
+import HomePage from './HomePage';
 import store from './store';
 
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
-
 const Switcher = connect(({ location }) => ({
   location,
 }))(props => {
@@ -20,7 +20,7 @@ const Switcher = connect(({ location }) => ({
     case 'ADMINPAGE':
       return <AdminPage />;
     case 'HOMEPAGE':
-      return <div>HOME</div>;
+      return <HomePage />;
     case 'EVENTPAGE':
       return <EventPage />;
     case 'EVENTSUBJECTPAGE':
