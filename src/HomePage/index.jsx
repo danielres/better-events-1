@@ -12,9 +12,28 @@ import React from 'react';
 
 const panelTitle = discussion => (
   <h3>
-    {discussion.event.name}
-    {': '}
-    {discussion.subject.name}
+    <Link
+      to={{
+        type: 'EVENTPAGE',
+        payload: {
+          eventCode: discussion.event.eventCode,
+        },
+      }}
+    >
+      {discussion.event.name}
+    </Link>
+    {' - '}
+    <Link
+      to={{
+        type: 'EVENTSUBJECTPAGE',
+        payload: {
+          eventCode: discussion.event.eventCode,
+          subjectId: discussion.subject.id,
+        },
+      }}
+    >
+      {discussion.subject.name}
+    </Link>
   </h3>
 );
 
@@ -23,43 +42,36 @@ const HomePage = ({ discussions }) => (
     {discussions && (
       <div>
         <h2>Your discussions</h2>
-        <PanelGroup accordion>
-          {discussions.map((discussion, i) => (
-            <Panel
-              eventKey={i}
-              header={panelTitle(discussion)}
-              key={discussion.id}
-            >
-              <Link
-                to={{
-                  type: 'EVENTSUBJECTPAGE',
-                  payload: {
-                    eventCode: discussion.event.eventCode,
-                    subjectId: discussion.subject.id,
-                  },
-                }}
-              >
-                {discussion.event.name}
-              </Link>
-              <ListGroup fill>
-                {discussion.messages.map(message => (
-                  <ListGroupItem key={message.id}>
-                    <Row>
-                      <Col xs={1} md={2}>
-                        <small>
-                          {message.author.displayName}
-                          {': '}
-                        </small>
-                      </Col>
-                      <Col xs={11} md={11}>
-                        {message.body}
-                      </Col>
-                    </Row>
-                  </ListGroupItem>
-                ))}
-              </ListGroup>
-            </Panel>
-          ))}
+        <PanelGroup>
+          <Row>
+            {discussions.map(discussion => (
+              <Col xs={12} md={4} style={{ marginBottom: 20 }}>
+                <Panel
+                  header={panelTitle(discussion)}
+                  key={discussion.id}
+                >
+                  <div className="panel-heading">aaa</div>
+                  <ListGroup fill>
+                    {discussion.messages.map(message => (
+                      <ListGroupItem key={message.id}>
+                        <Row>
+                          <Col xs={1} md={2}>
+                            <small>
+                              {message.author.displayName}
+                              {': '}
+                            </small>
+                          </Col>
+                          <Col xs={11} md={11}>
+                            {message.body}
+                          </Col>
+                        </Row>
+                      </ListGroupItem>
+                    ))}
+                  </ListGroup>
+                </Panel>
+              </Col>
+            ))}
+          </Row>
         </PanelGroup>
       </div>
     )}
