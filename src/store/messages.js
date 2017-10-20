@@ -1,5 +1,3 @@
-import { groupBy } from 'lodash/fp';
-
 import io from 'socket.io-client';
 import store from '../store';
 
