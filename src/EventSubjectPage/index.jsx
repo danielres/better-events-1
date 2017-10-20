@@ -1,29 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import { sendMessage } from '../store/messages';
 import Link from 'redux-first-router-link';
-import io from 'socket.io-client';
-
-var socket = io();
-
-socket.emit('chat mounted', 'user');
-//     socket.on('new bc message', msg =>
-//       dispatch(actions.receiveRawMessage(msg))
-//     );
-//     socket.on('typing bc', user =>
-//       dispatch(actions.typing(user))
-//     );
-//     socket.on('stop typing bc', user =>
-//       dispatch(actions.stopTyping(user))
-//     );
-//     socket.on('new channel', channel =>
-//       dispatch(actions.receiveRawChannel(channel))
-//     );
-//     socket.on('receive socket', socketID =>
-//       dispatch(authActions.receiveSocket(socketID))
-//     );
-//     socket.on('receive private channel', channel =>
-//       dispatch(actions.receiveRawChannel(channel))
-//     );
 
 const EventSubjectPage = ({
   event,
@@ -84,9 +62,7 @@ const mapState = ({ events, location }) => {
 };
 
 const mapDispatch = dispatch => ({
-  onSubmit: msg => {
-    socket.emit('message', msg);
-  },
+  onSubmit: sendMessage,
 });
 
 export default connect(mapState, mapDispatch)(EventSubjectPage);
