@@ -28,7 +28,11 @@ const EventSubjectPage = ({
 
           {subject.name}
         </h2>
-        <div>{messages.map(m => <li>{m.body}</li>)}</div>
+        <div>
+          {messages
+            .filter(m => m.discussionId === subject.id)
+            .map(m => <li>{m.body}</li>)}
+        </div>
         <form
           onSubmit={e => {
             e.preventDefault();
