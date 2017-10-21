@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { sendMessage } from '../store/messages';
+import { sendMessage } from '../io/messages';
 import Link from 'redux-first-router-link';
 
 const EventSubjectPage = ({
   event,
   eventCode,
+  messages,
   onSubmit,
   subject,
 }) => (
@@ -27,12 +28,14 @@ const EventSubjectPage = ({
 
           {subject.name}
         </h2>
-
+        <div>{messages.map(m => <li>{m.body}</li>)}</div>
         <form
           onSubmit={e => {
             e.preventDefault();
-            if (this.messageInput.value)
-              onSubmit(this.messageInput.value);
+            onSubmit({
+              body: this.messageInput.value,
+              discussionId: subject.id,
+            });
             this.messageInput.value = '';
           }}
         >
@@ -49,7 +52,8 @@ const EventSubjectPage = ({
   </div>
 );
 
-const mapState = ({ events, location }) => {
+const mapState = ({ events, location, messages }) => {
+  console.log({ messages });
   const { eventCode, subjectId } = location.payload;
   const event = events.entries[eventCode];
   return {
@@ -58,11 +62,14 @@ const mapState = ({ events, location }) => {
     subject: event
       ? event.subjects.find(s => s.id === subjectId)
       : null,
+    messages,
   };
 };
 
-const mapDispatch = dispatch => ({
-  onSubmit: sendMessage,
+const mapDispatch = (dispatch, ownProps) => ({
+  onSubmit: ({ body, discussionId }) => {
+    if (body) sendMessage({ body, discussionId });
+  },
 });
 
 export default connect(mapState, mapDispatch)(EventSubjectPage);

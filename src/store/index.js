@@ -8,6 +8,7 @@ import { connectRoutes } from 'redux-first-router';
 import createHistory from 'history/createBrowserHistory';
 
 import { eventsReducer } from './events';
+import { messagesReducer } from './messages';
 import routesMap from './routesMap';
 
 const compose =
@@ -24,6 +25,7 @@ const {
 const rootReducer = combineReducers({
   events: eventsReducer,
   location: locationReducer,
+  messages: messagesReducer,
 });
 
 const middlewares = applyMiddleware(routerMiddleware);

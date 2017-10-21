@@ -1,11 +1,12 @@
 import './index.css';
+import './io/messages';
 
 import { Provider, connect } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
 import AdminPage from './AdminPage';
+import App from './App';
 import EventPage from './EventPage';
 import EventSubjectPage from './EventSubjectPage';
 import HomePage from './HomePage';
